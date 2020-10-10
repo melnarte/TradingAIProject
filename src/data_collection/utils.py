@@ -60,7 +60,7 @@ def load_ticker_list(path : str):
             tickers.append(row[0])
     return tickers
 
-
+# Save json data to file 'data_path/year/month/day/ticker.json'
 def save_to_file(data, data_path : str, date : Union[dt.date, dt.datetime], ticker : str):
     dateStr = date.strftime('%Y/%m/%d')
     path = os.path.join(data_path, dateStr, ticker+'.json')
