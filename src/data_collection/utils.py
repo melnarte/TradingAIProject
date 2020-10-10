@@ -1,5 +1,7 @@
 from csv import reader
 import datetime as dt
+import json
+import os
 from typing import Union
 
 
@@ -57,3 +59,19 @@ def load_ticker_list(path : str):
         for row in csv_reader:
             tickers.append(row[0])
     return tickers
+
+
+def save_to_file(data, data_path : str, date : Union[dt.date, dt.datetime], ticker : str):
+    dateStr = date.strftime('%Y/%m/%d')
+    path = os.path.join(data_path, dateStr, ticker+'.json')
+
+    # Creating directories
+    if not os.path.exists(os.path.dirname(path)):
+        try:
+            os.makedirs(os.path.dirname(path))
+        except OSError as exc: # Guard against race condition
+            if exc.errno != errno.EEXIST:
+                raise
+
+    with open(path, 'w') as outfile:
+        json.dump(data, outfile)
