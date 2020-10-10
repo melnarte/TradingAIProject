@@ -44,15 +44,16 @@ class Collector():
 
         # Loading ticker list
         tickers = load_ticker_list(os.path.join(self.data_path, 'tickers/list.txt'))
+        n = len(tickers)
         if nbTickers < 1:
-            nbTickers = len(tickers)
+            nbTickers = n
 
         for i in range(fromIndex, fromIndex+nbTickers):
-            print("Getting " + tickers[i] + "...")
+            print("Getting " + tickers[i] + "(" + str(i+1) + "/" + str(n) + ")" "...")
             self.get_ticker_data(tickers[i], start_date, end_date)
 
 
 if __name__ == '__main__':
     data_path = os.path.abspath(os.path.join(os.path.dirname(__file__),'../../data'))
     col = Collector(data_path)
-    col.request_historical_data(dt.date(2020,10,1), dt.date(2020,10,6), nbTickers = 3)
+    col.request_historical_data(dt.date(2020,10,1), dt.date(2020,10,6), nbTickers = 0)
