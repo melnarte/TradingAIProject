@@ -1,3 +1,4 @@
+from csv import reader
 import datetime as dt
 from typing import Union
 
@@ -47,3 +48,12 @@ def ending_date_is_superior(start : Union[dt.date, dt.datetime], end : Union[dt.
         return False
     else:
         return True
+
+# Load a ticker list from file
+def load_ticker_list(path : str):
+    tickers = []
+    with open(path, 'r') as csv_file:
+        csv_reader = reader(csv_file)
+        for row in csv_reader:
+            tickers.append(row[0])
+    return tickers
