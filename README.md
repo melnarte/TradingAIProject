@@ -1,5 +1,6 @@
 # Trading AI project
 In this project I'll reproduce machine learning based quantitative trading papers and try to apply them for real trading. Feel free to give any suggestion and to contribute to the project.
+Here is the projects Trello : https://trello.com/b/aJxwdWoP/trading-ai-project
 
 ## Data collection
 
