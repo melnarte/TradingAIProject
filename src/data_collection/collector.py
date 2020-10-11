@@ -56,4 +56,4 @@ class Collector():
 if __name__ == '__main__':
     data_path = os.path.abspath(os.path.join(os.path.dirname(__file__),'../../data'))
     col = Collector(data_path)
-    col.request_historical_data(dt.date(2020,10,1), dt.date(2020,10,6), nbTickers = 0)
+    col.request_historical_data(dt.date(2019,10,1), dt.date(2020,10,1), nbTickers = 0)
